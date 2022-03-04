@@ -1,18 +1,21 @@
----
-maintainer: randomsort
----
+
 # Git Katas
 
 ## Quick Start
 
+
+### On Your Local Machine
+
+
 - Clone this repository
 - Go into the folder you want to solve an exercise in
-- Unzip the corresponding file
+- Run the `setup.sh` script
+- Consult the README.md in that folder to get a description of the exercise
 
 ## Purpose of Git Katas
 
 This repository is a collection of Git exercises.
-The concept is stolen without shame from [Schauderhaft.de](http://blog.schauderhaft.de/gitkata/).
+The concept is stolen without shame from [Schauderhaft.de](http://blog.schauderhaft.de/gitkata/ - original source of repository: https://github.com/eficode-academy/git-katas)
 Unfortunately, they have not maintained the system - and we need more good Git exercises.
 
 The exercises are designed for use when we are teaching Git courses. You should be able to use them as self-contained exercises that will allow you to keep your Git skills sharp.
@@ -22,8 +25,6 @@ Exercises starting with _basic_ are entry-level - other exercises vary greatly i
 To get an overview of the exercises in here look in [Overview.md](Overview.md).
 
 Feel free to use these exercises, that's why they're public!
-
-
 
 ## Suggested Learning Path
 
@@ -56,7 +57,13 @@ everything you need to be able to use Git effectively in your day to day life.
 
 See [Overview.md](Overview.md) for a more complete list and suggested order.
 
+## Contributing
 
+If you miss exercises or find errors in any of them, feel free to improve them and make a pull request.
+
+You can also make an issue so we notice an opportunity to improve!
+
+Thank you!
 
 ## Cheatsheet
 
@@ -93,7 +100,7 @@ git commit -am "I still do!"            # A combination of the above
 git commit --amend                      # Re-do the commit message of the previous commit (don't do this after pushing!)
                                         #   We _never_ change "public history"
 git reset <file>                        # Unstage a staged file leaving in working directory without losing any changes.
-git reset --soft [commit_hash]          # resets the current branch to <commit>. Does not touch the staging area or the working tree at all. 
+git reset --soft [commit_hash]          # resets the current branch to <commit>. Does not touch the staging area or the working tree at all.
                                         # --hard mode would discard all changes.
 
 # Configuring a different editor
@@ -124,8 +131,8 @@ git stash apply <stash>                 # Apply given <stash>, or if none given 
 
 # Working with Branches
 git branch my-branch       # Create a new branch called my-branch
-git checkout my-branch     # Checkout ("Switch" to work on) my-branch
-git checkout -b my-branch  # Create a new branch called my-branch AND switch to it
+git switch my-branch     # Switch to a different branch to work on it
+git switch -c my-branch  # Create a new branch called my-branch AND switch to it
 git branch -d my-branch    # Delete branch my-branch that has been merged with master
 git branch -D my-branch    # Forcefully delete a branch my-branch that hasn't been merged to master
 
@@ -137,21 +144,21 @@ git rebase master        # Rebase current branch on top of master branch
 git remote              # Show your current remotes
 git remote -v           # Show your current remotes and their URLs
 git push                # Publish your commits to the upstream master of your currently checked out branch
-git push -u origin my-branch  # Push newly created branch to remote repo setting up to track remote branch from origin. 
+git push -u origin my-branch  # Push newly created branch to remote repo setting up to track remote branch from origin.
                               # No need to specify remote branch name, for e.g., when doing a 'git pull' on that branch.
 git pull                # Pull changes from the remote to your currently checked out branch
 
 # Re/moving files under version control
 git rm <path/to/the/file>                 # remove file and stage the change to be committed.
-git mv <source/file> <destination/file>   # move/rename file and stage the change to be committed.  
+git mv <source/file> <destination/file>   # move/rename file and stage the change to be committed.
 
 # Aliases - it's possible to make aliases of frequently used commands
 #   This is often done to make a command shorter, or to add default flags
 
-# Adding a shorthand "co" for "checkout"
-git config --global alias.co "checkout"
+# Adding a shorthand "sw" for "switch"
+git config --global alias.sw "switch"
 # Usage:
-git co      # Does a "git checkout"
+git sw master     # Does a "git switch master"
 
 ## Logging
 git log --graph --oneline --all # Show a nice graph of the previous commits
@@ -159,4 +166,17 @@ git log --graph --oneline --all # Show a nice graph of the previous commits
 git config --global alias.lol "log --graph --oneline --all"
 ## Using the alias
 git lol     # Does a "git log --graph --oneline --all"
+```
+
+## Testing
+
+There is a very small test that you can run in powershell or bash.
+It is contained in the scripts `test.sh` and `test.ps1`.
+
+### Cleanup
+
+You can remove testing artifacts, `exercise` directories, with the git clean command:
+
+```sh
+git clean -ffdX
 ```
